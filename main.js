@@ -78,7 +78,7 @@ class QuoteBox extends React.Component {
         let colorString = `rgb(${r}, ${g}, ${b})`;
 
         document.body.style.backgroundColor = colorString;
-        document.getElementById("new-quote-button").style.backgroundColor = colorString;
+        document.getElementById("new-quote").style.backgroundColor = colorString;
         document.body.style.color = colorString;
 
 
