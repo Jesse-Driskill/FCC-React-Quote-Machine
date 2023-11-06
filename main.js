@@ -145,7 +145,6 @@ class GenQuoteButton extends React.Component {
 
     render() {
         return (<button id="new-quote" onClick={this.props.generateNewQuote}>New Quote</button>)
-
     }
 }
 
