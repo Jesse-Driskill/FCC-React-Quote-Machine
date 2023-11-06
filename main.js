@@ -95,7 +95,10 @@ class QuoteBox extends React.Component {
         return (<div id="quote-box">
             <Quote quote={this.state.quote} />
             <QuoteAuthor author={this.state.author} />
-            <QuoteBoxFooter generateNewQuote={this.generateNewQuote}/>
+            <QuoteBoxFooter 
+            author={this.state.author} 
+            quote={this.state.quote}
+            generateNewQuote={this.generateNewQuote}/>
         </div>)
     }
 }
@@ -128,7 +131,7 @@ class QuoteBoxFooter extends React.Component {
     }
     render() {
         return (<div id="quote-box-footer">
-        <SocialsContainer/>
+        <SocialsContainer author={this.props.author} quote={this.props.quote}/>
         <GenQuoteButton id="gen-quote-button" generateNewQuote={this.props.generateNewQuote}/>
         </div>)
     }
@@ -152,7 +155,7 @@ class SocialsContainer extends React.Component {
     }
     render() {
         return (<div id="socials-container">
-        <TwitterIcon/>
+        <TwitterIcon quote={this.props.quote} author={this.props.author}/>
         <TumblrIcon/>
     </div>)
     }
@@ -163,7 +166,10 @@ class TwitterIcon extends React.Component {
         super(props);
     }
     render() {
-        return (<a href="twitter.com/intent/tweet" id="tweet-quote">
+        let quote = this.props.quote.split(" ").join("%20");
+        let author = this.props.author.split(" ").join("%20");
+        let tweetString = `https://twitter.com/intent/tweet?text="${quote}"%0A-${author}`; 
+        return (<a href={tweetString} id="tweet-quote" target="_blank">
             <img height="50px" src="assets/twitter.png"></img>
         </a>)
     }
